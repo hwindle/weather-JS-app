@@ -114,7 +114,32 @@ function createOneDaySection(today) {
 /*** Getting Geolocation data if device has this ***/
 
 // Run these items when the app first starts
-// create 6 days, first with today's class
+
+window.addEventListener('load', () => {
+  // Getting Geolocation data if device has this
+  let latitude, longitude;
+  if (navigator.geolocation) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  } else {
+    console.log('Geolocation is turned off, please use the location box');
+  }
+  // create 6 days, first with today's class
+  // the number of days of weather forecast to get
+  const forecastDaysLen = 6;
+  let daySection = '';
+  for (let i = 0; i < forecastDaysLen; i++) {
+    if (i === 0) {
+      daySection = createOneDaySection(true);
+      addToDOM(daySection);
+    } else {
+      daySection = createOneDaySection(false);
+      addToDOM(daySection);
+    }
+  }
+});
+
+// add button event listener
 
 // test area
 // const thing = createOneDaySection(false);

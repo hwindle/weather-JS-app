@@ -1,4 +1,4 @@
-import { getLocation, getWeather } from './data-functions';
+// import { getLocation, getWeather } from './data-functions';
 
 /*** DOM functions ***/
 /***
@@ -30,7 +30,7 @@ function createTable() {
   caption.setAttribute('class', 'weather-descr');
   table.appendChild(caption);
   // basic weather info
-  table.innerHTML = `
+  table.innerHTML += `
     <tr>
       <th>Feels Like</th>
       <td class="feels-like-temp"></td>
@@ -78,3 +78,4 @@ function createTable() {
 
 // Run these items when the app first starts
 // create 6 days, first with today's class
+console.dir(createTable());

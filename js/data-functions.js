@@ -5,14 +5,14 @@ function getLocationDOM() {
   const locationInput = document.querySelector('input#typed-location').value;
   //console.log('Location line 6: ', locationInput);
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
+    navigator.geolocation.getCurrentPosition((position) => {
       latitude = position.coords.latitude;
       longitude = position.coords.longitude;
     });
     if (!locationInput) {
       const locObject = {
         lat: latitude,
-        long: longitude
+        long: longitude,
       };
       setWeatherLocation(locObject);
       return locObject;
@@ -42,25 +42,26 @@ function getWeather(location) {
     searchParams += `&q=${location}`;
   }
   // get 6 day weather daily forecast
-  const forecastEndpoint = baseURL + 'forecast.json' + searchParams + '&days=6' + '&aqi=no&alerts=no';
+  const forecastEndpoint =
+    baseURL + 'forecast.json' + searchParams + '&days=6' + '&aqi=no&alerts=no';
   fetch(forecastEndpoint)
-  .then((response) => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      console.error('Weather response code: ', response.status);
-    }
-  })
-  .then((weatherData) => {
-    // parse JSON to an object
-    // process elsewhere
-    const processedWeatherArr = processWeather(weatherData);
-  })
-  .catch((error) => {
-    console.error('Weather forecast fetching error', error);
-  });
-  // set prevWeatherData here
-  return processWeatherArr;
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error('Weather response code: ', response.status);
+      }
+    })
+    .then((weatherData) => {
+      // parse JSON to an object
+      // process elsewhere
+      const processedWeatherArr = processWeather(weatherData);
+      // set prevWeatherData here
+      return processedWeatherArr;
+    })
+    .catch((error) => {
+      console.error('Weather forecast fetching error', error);
+    });
 }
 
 /***
@@ -69,7 +70,32 @@ function getWeather(location) {
  * @returns Array of objects, 6 elements (each element being a day)
  */
 function processWeather(data) {
-  //console.dir(data);
+  let daysArray = [];
+  data.forecast.forecastday.map((day) => {
+      let { sunrise, sunset } = day.astro;
+      let { icon, text: descr } = day.day.condition;
+      let { maxtemp_c, mintemp_c, maxwind_mph, avghumidity, totalprecip_in } =
+        day.day;
+      // put items in object
+      let oneDayObject = {
+        icon: icon,
+        dayTemp: maxtemp_c,
+        nightTemp: mintemp_c,
+        description: descr,
+        feelsLike: (maxtemp_c - 2).toFixed(2),
+        windSpeed: (maxwind_mph - 2).toFixed(2),
+        windGust: maxwind_mph,
+        humidity: avghumidity,
+        rainQty: totalprecip_in,
+        sunrise: sunrise,
+        sunset: sunset,
+      };
+      // put data in array
+      daysArray.push(oneDayObject);
+    });
+  // return array
+  console.dir(daysArray);
+  return daysArray;
 }
 
 /***
@@ -77,7 +103,7 @@ function processWeather(data) {
  * @params String|object {lat: x, long: y}
  */
 function setWeatherLocation(location) {
-  if (typeof(location) !== 'string') {
+  if (typeof location !== 'string') {
     localStorage.setItem('prevLocation', JSON.stringify(location));
   } else {
     localStorage.setItem('prevLocation', location);

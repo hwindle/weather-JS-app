@@ -1,9 +1,11 @@
 /*** get location, from coords if given,  ***/
 
-// getWeather(location, full-weather)
+// getWeather(location)
 
-// processWeather(parsed Json, full-weather)
+// processWeather(parsed Json)
 
 // setWeatherLocation(location)
 
 // getWeatherLocation(location)
+
+// previousWeatherData()

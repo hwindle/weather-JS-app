@@ -79,7 +79,7 @@ function createTable() {
  * add the forecast-weather class
  * @returns a HTML fragment for one day of weather (section)
  */
-function createOneDaySection(today) {
+function createOneDaySection(today, index) {
   // article HTML bit
   const article = document.createElement('article');
   const iconArea = createFigure();
@@ -102,16 +102,20 @@ function createOneDaySection(today) {
   // containing section element
   const outerSection = document.createElement('section');
   outerSection.setAttribute('class', 'weather-one-day');
+  outerSection.setAttribute('id', 'day-' + index.toString());
   outerSection.append(innerDiv);
   // return the section
   return outerSection;
 }
 
 // addToDOM (adds weather-one-day section to area (still a template))
+function addToDOM(element) {
+  const container = document.querySelector('main#forecast-area');
+  container.append(element);
+}
 
-// updateWeather(id, full) puts weather info in a card with html id
+// updateAllWeather() puts weather info in a card with html id
 
-/*** Getting Geolocation data if device has this ***/
 
 // Run these items when the app first starts
 
@@ -119,8 +123,10 @@ window.addEventListener('load', () => {
   // Getting Geolocation data if device has this
   let latitude, longitude;
   if (navigator.geolocation) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
+    navigator.geolocation.getCurrentPosition(position => {
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+    });
   } else {
     console.log('Geolocation is turned off, please use the location box');
   }
@@ -130,10 +136,10 @@ window.addEventListener('load', () => {
   let daySection = '';
   for (let i = 0; i < forecastDaysLen; i++) {
     if (i === 0) {
-      daySection = createOneDaySection(true);
+      daySection = createOneDaySection(true, i);
       addToDOM(daySection);
     } else {
-      daySection = createOneDaySection(false);
+      daySection = createOneDaySection(false, i);
       addToDOM(daySection);
     }
   }
@@ -142,6 +148,3 @@ window.addEventListener('load', () => {
 // add button event listener
 
 // test area
-// const thing = createOneDaySection(false);
-// const mainElement = document.querySelector('main#forecast-area');
-// mainElement.append(thing);

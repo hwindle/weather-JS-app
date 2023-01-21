@@ -115,8 +115,22 @@ function addToDOM(element) {
 }
 
 // updateAllWeather(location) puts weather info into the DOM
-function updateAllWeather(location) {
-  const weather = getWeather(location);
+function updateAllWeather(dataArr) {
+  console.dir(dataArr);
+  dataArr.map((day, index) => {
+    const daySection = document.querySelector('#day-' + index);
+    daySection.querySelector('img').setAttribute('src', 'https://' + day.icon);
+    daySection.querySelector('.day-temp').textContent = day.dayTemp;
+    daySection.querySelector('.night-temp').textContent = day.nightTemp;
+    daySection.querySelector('caption').textContent = day.descr;
+    daySection.querySelector('.feels-like-temp').textContent = day.feelsLike;
+    daySection.querySelector('.wind-speed').textContent = day.windSpeed;
+    daySection.querySelector('.wind-gust').textContent = day.windGust;
+    daySection.querySelector('.humidity').textContent = day.humidity;
+    daySection.querySelector('.rain-qty').textContent = day.rainQty;
+    daySection.querySelector('.sunrise').textContent = day.sunrise;
+    daySection.querySelector('.sunset').textContent = day.sunset;
+  });
 }
 
 
@@ -143,7 +157,8 @@ window.addEventListener('load', () => {
 const getWeatherBtn = document.querySelector('#find-weather');
 getWeatherBtn.addEventListener('click', () => {
   const location = getLocationDOM();
-  updateAllWeather(location);
-  //console.log(location);
+  //const dataArr = getWeather(location);
+  //console.log(dataArr);
+  getWeather(location);
 });
 

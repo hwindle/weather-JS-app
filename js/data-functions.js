@@ -3,7 +3,7 @@ function getLocationDOM() {
   // Getting Geolocation data if device has this
   let latitude, longitude;
   const locationInput = document.querySelector('input#typed-location').value;
-  //console.log('Location line 6: ', locationInput);
+  console.log('Location line 6: ', locationInput);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       latitude = position.coords.latitude;
@@ -55,9 +55,8 @@ function getWeather(location) {
     .then((weatherData) => {
       // parse JSON to an object
       // process elsewhere
-      const processedWeatherArr = processWeather(weatherData);
-      // set prevWeatherData here
-      return processedWeatherArr;
+      const dataArr = processWeather(weatherData);
+      updateAllWeather(dataArr);
     })
     .catch((error) => {
       console.error('Weather forecast fetching error', error);
@@ -94,7 +93,6 @@ function processWeather(data) {
       daysArray.push(oneDayObject);
     });
   // return array
-  console.dir(daysArray);
   return daysArray;
 }
 

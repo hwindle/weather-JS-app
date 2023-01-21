@@ -119,6 +119,7 @@ function updateAllWeather(dataArr) {
   console.dir(dataArr);
   dataArr.map((day, index) => {
     const daySection = document.querySelector('#day-' + index);
+    daySection.querySelector('h3.date').textContent = day.date;
     daySection.querySelector('img').setAttribute('src', 'https://' + day.icon);
     daySection.querySelector('.day-temp').textContent = day.dayTemp;
     daySection.querySelector('.night-temp').textContent = day.nightTemp;

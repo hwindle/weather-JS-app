@@ -77,6 +77,7 @@ function processWeather(data) {
         day.day;
       // put items in object
       let oneDayObject = {
+        date: new Date(day.date).toLocaleDateString(),
         icon: icon,
         dayTemp: maxtemp_c,
         nightTemp: mintemp_c,

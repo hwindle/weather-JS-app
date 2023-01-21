@@ -3,7 +3,7 @@ function getLocationDOM() {
   // Getting Geolocation data if device has this
   let latitude, longitude;
   const locationInput = document.querySelector('input#typed-location').value;
-  console.log('Location line 6: ', locationInput);
+  //console.log('Location line 6: ', locationInput);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
       latitude = position.coords.latitude;
@@ -33,36 +33,20 @@ function getLocationDOM() {
  * @returns Array of objects
  */
 function getWeather(location) {
-  const apiKey = '9da4dada208801151c767e2a4ae64b2c';
-  let latitude, longitude;
-  // get lat and long for text location
-  if (typeof(location) === 'string') {
-    const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=` + apiKey;
-    
-    // fetch 
-    fetch(geocodingUrl)
-    .then((response) => {
-      if (response.ok) {
-        return response.JSON();
-      }
-    })
-    .then((geocoding) => {
-      latitude = geocoding[0].lat;
-      longitude = geocoding[0].lon;
-    })
-    .catch((error) => {
-      console.error('Geocoding fetch error: ', error);
-    });
+  const apiKey = '4c05f41df20f474bb47154635232101';
+  const baseURL = 'http://api.weatherapi.com/v1/';
+  let searchParams = `?key=${apiKey}`;
+  if (location.lat) {
+    searchParams += `&q=${location.lat},${location.long}`;
   } else {
-    latitude = location.lat;
-    longitude = location.long;
+    searchParams += `&q=${location}`;
   }
   // get 6 day weather daily forecast
-  const forecastURL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt=6&appid=${apiKey}`;
-  fetch(forecastURL)
+  const forecastEndpoint = baseURL + 'forecast.json' + searchParams + '&days=6' + '&aqi=no&alerts=no';
+  fetch(forecastEndpoint)
   .then((response) => {
     if (response.ok) {
-      return response.JSON();
+      return response.json();
     } else {
       console.error('Weather response code: ', response.status);
     }
@@ -70,13 +54,13 @@ function getWeather(location) {
   .then((weatherData) => {
     // parse JSON to an object
     // process elsewhere
-    const processedWeatherArr = processWeather(JSON.parse(weatherData));
+    const processedWeatherArr = processWeather(weatherData);
   })
   .catch((error) => {
     console.error('Weather forecast fetching error', error);
   });
   // set prevWeatherData here
-  return processWeatherArr || [];
+  return processWeatherArr;
 }
 
 /***
@@ -85,7 +69,7 @@ function getWeather(location) {
  * @returns Array of objects, 6 elements (each element being a day)
  */
 function processWeather(data) {
-  console.dir(data);
+  //console.dir(data);
 }
 
 /***

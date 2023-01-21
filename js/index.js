@@ -1,4 +1,4 @@
-// import { getLocation, getWeather } from './data-functions';
+//import { getLocationDOM, getWeather } from './data-functions';
 
 /*** DOM functions ***/
 /***
@@ -114,22 +114,13 @@ function addToDOM(element) {
   container.append(element);
 }
 
-// updateAllWeather() puts weather info in a card with html id
+// updateAllWeather(location) puts weather info in a card with html id
 
 
 // Run these items when the app first starts
 
 window.addEventListener('load', () => {
-  // Getting Geolocation data if device has this
-  let latitude, longitude;
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-    });
-  } else {
-    console.log('Geolocation is turned off, please use the location box');
-  }
+  
   // create 6 days, first with today's class
   // the number of days of weather forecast to get
   const forecastDaysLen = 6;
@@ -146,5 +137,11 @@ window.addEventListener('load', () => {
 });
 
 // add button event listener
+const getWeatherBtn = document.querySelector('#find-weather');
+getWeatherBtn.addEventListener('click', () => {
+  const location = getLocationDOM();
+  //updateAllWeather(location);
+  console.log(location);
+});
 
 // test area

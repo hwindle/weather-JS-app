@@ -12,8 +12,8 @@ function createFigure() {
     src=""
     alt="weather-icon" />
     <figcaption class="temps-area">
-      <span class="day-temp">3</span>
-      <span class="night-temp">-4</span>
+      <span class="day-temp"></span>
+      <span class="night-temp"></span>
     </figcaption>`;
   // return the weather icon area
   return figure;
@@ -29,8 +29,10 @@ function createTable() {
   const caption = document.createElement('caption');
   caption.setAttribute('class', 'weather-descr');
   table.appendChild(caption);
+  // create tbody to add trs to
+  let tbodyElement = document.createElement('tbody');
   // basic weather info
-  table.innerHTML += `
+  tbodyElement.innerHTML = `
     <tr>
       <th>Feels Like</th>
       <td class="feels-like-temp"></td>
@@ -46,29 +48,64 @@ function createTable() {
   const fullDetails = document.querySelector('#full-weather-view').checked;
   if (fullDetails) {
     // add more rows to the table
-    table.innerHTML += `
+    tbodyElement.innerHTML += `
     <tr>
       <th>Humidity</th>
-      <td class="humidity">10</td>
+      <td class="humidity"></td>
     </tr>
     <tr>
       <th>Rain (inches)</th>
-      <td class="rain-qty">1</td>
+      <td class="rain-qty"></td>
     </tr>
     <tr>
       <th>Sunrise</th>
-      <td class="sunrise">8:00</td>
+      <td class="sunrise"></td>
     </tr>
     <tr>
       <th>Sunset</th>
-      <td class="sunset">16:30</td>
+      <td class="sunset"></td>
     </tr>`;
   }
+  // put the body of the table with the rows in the table
+  table.append(tbodyElement);
   // return the HTML 
   return table;
 }
 
-// createOneDaySection(today)
+/***
+ * Add the figure and table to a HTML element: 
+ * section.weather-one-day
+ * if today is set, add a todays-weather class, otherwise
+ * add the forecast-weather class
+ * @returns a HTML fragment for one day of weather (section)
+ */
+function createOneDaySection(today) {
+  // article HTML bit
+  const article = document.createElement('article');
+  const iconArea = createFigure();
+  const detailsTable = createTable();
+  article.classList.add('weather-info');
+  article.append(iconArea);
+  article.append(detailsTable);
+  // date heading
+  const dateH3 = document.createElement('h3');
+  dateH3.classList.add('date');
+  // div with today/forecast class
+  const innerDiv = document.createElement('div');
+  if (today) {
+    innerDiv.classList.add('todays-weather');
+  } else {
+    innerDiv.classList.add('forecast-weather');
+  }
+  innerDiv.append(dateH3);
+  innerDiv.append(article);
+  // containing section element
+  const outerSection = document.createElement('section');
+  outerSection.setAttribute('class', 'weather-one-day');
+  outerSection.append(innerDiv);
+  // return the section
+  return outerSection;
+}
 
 // addToDOM (adds weather-one-day section to area (still a template))
 
@@ -78,4 +115,8 @@ function createTable() {
 
 // Run these items when the app first starts
 // create 6 days, first with today's class
-console.dir(createTable());
+
+// test area
+// const thing = createOneDaySection(false);
+// const mainElement = document.querySelector('main#forecast-area');
+// mainElement.append(thing);

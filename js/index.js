@@ -1,7 +1,23 @@
 import { getLocation, getWeather } from './data-functions';
 
 /*** DOM functions ***/
-// createFigure
+/***
+ * Create the HTML for the figure and temperatures
+ * @returns a HTML fragment
+ */
+function createFigure() {
+  const figure = document.createElement('figure');
+  figure.innerHTML = `<img
+    class="img-fluid rounded-circle todays-w-img"
+    src=""
+    alt="weather-icon" />
+    <figcaption class="temps-area">
+      <span class="day-temp">3</span>
+      <span class="night-temp">-4</span>
+    </figcaption>`;
+  // return the weather icon area
+  return figure;
+}
 
 // createTable
 

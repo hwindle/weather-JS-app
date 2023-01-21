@@ -127,10 +127,14 @@ function updateAllWeather(dataArr) {
     daySection.querySelector('.feels-like-temp').textContent = day.feelsLike;
     daySection.querySelector('.wind-speed').textContent = day.windSpeed;
     daySection.querySelector('.wind-gust').textContent = day.windGust;
-    daySection.querySelector('.humidity').textContent = day.humidity;
-    daySection.querySelector('.rain-qty').textContent = day.rainQty;
-    daySection.querySelector('.sunrise').textContent = day.sunrise;
-    daySection.querySelector('.sunset').textContent = day.sunset;
+    // optional items
+    const fullDetails = document.querySelector('#full-weather-view').checked;
+    if (fullDetails) {
+      daySection.querySelector('.humidity').textContent = day.humidity;
+      daySection.querySelector('.rain-qty').textContent = day.rainQty;
+      daySection.querySelector('.sunrise').textContent = day.sunrise;
+      daySection.querySelector('.sunset').textContent = day.sunset;
+    }
   });
 }
 
@@ -138,7 +142,6 @@ function updateAllWeather(dataArr) {
 // Run these items when the app first starts
 
 window.addEventListener('load', () => {
-  
   // create 6 days, first with today's class
   // the number of days of weather forecast to get
   const forecastDaysLen = 6;
@@ -151,6 +154,15 @@ window.addEventListener('load', () => {
       daySection = createOneDaySection(false, i);
       addToDOM(daySection);
     }
+  }
+  // get the previous weather if the location has been stored
+  if (getWeatherLocation()) {
+    const savedLoc = getWeatherLocation();
+    document.querySelector('#typed-location').value = savedLoc;
+    getWeather(savedLoc);
+    // show the main forecast area
+    const main = document.querySelector('main#forecast-area');
+    main.classList.remove('hide');
   }
 });
 

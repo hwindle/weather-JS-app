@@ -1,0 +1,78 @@
+main#forecast-area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 1rem auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main#forecast-area.hide {
+  display: none;
+}
+
+section.weather-one-day {
+  min-width: auto;
+  max-width: 600px;
+  padding: 0.8rem;
+}
+
+div.todays-weather {
+  padding: 0.8rem;
+  background-color: #ccc;
+}
+
+div.forecast-weather {
+  padding: 0.8rem;
+  background-color: white;
+}
+
+article.weather-info {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+article.weather-info > figure {
+  padding-right: 1.5rem;
+  border-right: 1px solid black;
+}
+
+article.weather-info > figure > img {
+  width: 200px;
+  height: 200px;
+}
+
+figcaption {
+  font-size: 2rem;
+  text-align: center;
+}
+
+figcaption > span::after,
+td.feels-like-temp::after {
+  content: '℃';
+}
+
+figcaption > span.day-temp {
+  font-weight: bold;
+}
+
+figcaption > span.night-temp::before {
+  content: 'Night: ';
+  font-size: 0.8rem;
+  color:rgb(54, 47, 47);
+  vertical-align: middle;
+}
+
+figcaption > span.night-temp {
+  color: rgb(54, 47, 47);
+}
+
+/*** details table ***/
+table > caption {
+  font-size: 1.8rem;
+  color: black;
+}

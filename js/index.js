@@ -114,7 +114,10 @@ function addToDOM(element) {
   container.append(element);
 }
 
-// updateAllWeather(location) puts weather info in a card with html id
+// updateAllWeather(location) puts weather info into the DOM
+function updateAllWeather(location) {
+  const weather = getWeather(location);
+}
 
 
 // Run these items when the app first starts
@@ -140,8 +143,7 @@ window.addEventListener('load', () => {
 const getWeatherBtn = document.querySelector('#find-weather');
 getWeatherBtn.addEventListener('click', () => {
   const location = getLocationDOM();
-  //updateAllWeather(location);
-  console.log(location);
+  updateAllWeather(location);
+  //console.log(location);
 });
 
-// test area

@@ -11,10 +11,16 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous" />
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.1.0/js/all.js"
+      crossorigin="anonymous"></script>
     <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet" />
     <!-- favicon.ico -->
     <link rel="apple-touch-icon" href="assets/favicon.png" />
     <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
@@ -24,82 +30,166 @@
   <body id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#page-top">Weather</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://riverlevels.uk/river-erewash" target="_blank">Local River Level</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://riverlevels.uk/flood-warning-river-trent-at-sawley-marina-including-sawley-lock" target="_blank">  River Trent Level</a></li>
-                </ul>
-            </div>
+      <div class="container px-5">
+        <a class="navbar-brand" href="#page-top">Weather</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#page-top"
+                >Back to Top</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://riverlevels.uk/river-erewash"
+                target="_blank"
+                >Local River Level</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="https://riverlevels.uk/flood-warning-river-trent-at-sawley-marina-including-sawley-lock"
+                target="_blank">
+                River Trent Level</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
     <!-- Header-->
     <header class="masthead text-center text-white">
-        <div class="masthead-content">
-            <div class="container px-5">
-                <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-                <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
+      <div class="masthead-content">
+        <div class="container px-5">
+          <h1 class="masthead-heading mb-0">Weather (℃)</h1>
+          <form action="#" id="weather-form">
+            <div class="mb-3">
+              <label for="typed-location" class="form-label float-start"
+                >Enter Location</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="typed-location"
+                placeholder="Location" />
             </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="full-weather-view">
+              <label class="form-check-label  float-start" for="full-weather-view">Show full weather details</label>
+            </div>
+          </form>
+          <a
+            class="btn btn-primary btn-xl rounded-pill mt-5"
+            href="#scroll"
+            id="find-weather"
+            >Get Weather</a
+          >
         </div>
-        <div class="bg-circle-1 bg-circle"></div>
-        <div class="bg-circle-2 bg-circle"></div>
-        <div class="bg-circle-3 bg-circle"></div>
-        <div class="bg-circle-4 bg-circle"></div>
+      </div>
+      <div class="bg-circle-1 bg-circle"></div>
+      <div class="bg-circle-2 bg-circle"></div>
+      <div class="bg-circle-3 bg-circle"></div>
+      <div class="bg-circle-4 bg-circle"></div>
     </header>
     <!-- Content section 1-->
     <section id="scroll">
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/01.jpg" alt="..." /></div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4">For those about to rock...</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                    </div>
-                </div>
+      <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img
+                class="img-fluid rounded-circle todays-w-img"
+                src="assets/img/01.jpg"
+                alt="weather-icon" />
             </div>
+          </div>
+          <div class="col-lg-6 order-lg-1 todays-weather">
+            <div class="p-5">
+              <h2 class="display-5 date">Thursday 19th January</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
+                aliquid, mollitia odio veniam sit iste esse assumenda amet
+                aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+                voluptatum molestiae adipisci, beatae obcaecati.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <!-- Content section 2-->
     <section>
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6">
-                    <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/02.jpg" alt="..." /></div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="p-5">
-                        <h2 class="display-4">We salute you!</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                    </div>
-                </div>
+      <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+          <div class="col-lg-6">
+            <div class="p-5">
+              <img
+                class="img-fluid rounded-circle forecast-w-img"
+                src="assets/img/02.jpg"
+                alt="..." />
             </div>
+          </div>
+          <div class="col-lg-6 forecast-weather">
+            <div class="p-5">
+              <h2 class="display-4">We salute you!</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
+                aliquid, mollitia odio veniam sit iste esse assumenda amet
+                aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+                voluptatum molestiae adipisci, beatae obcaecati.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <!-- Content section 3-->
     <section>
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5"><img class="img-fluid rounded-circle" src="assets/img/03.jpg" alt="..." /></div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4">Let there be rock!</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                    </div>
-                </div>
+      <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img
+                class="img-fluid rounded-circle forecast-w-img"
+                src="assets/img/03.jpg"
+                alt="..." />
             </div>
+          </div>
+          <div class="col-lg-6 order-lg-1 forecast-weather">
+            <div class="p-5">
+              <h2 class="display-4">Let there be rock!</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
+                aliquid, mollitia odio veniam sit iste esse assumenda amet
+                aperiam exercitationem, ea animi blanditiis recusandae! Ratione
+                voluptatum molestiae adipisci, beatae obcaecati.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <!-- Footer-->
     <footer class="py-5 bg-black">
-        <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2022</p></div>
+      <div class="container px-5">
+        <p class="m-0 text-center text-white small">
+          Red/orange Theme from start Bootstrap, <a href="#">GitHub link</a>
+        </p>
+      </div>
     </footer>
 
     <!-- scripts -->

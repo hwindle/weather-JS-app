@@ -110,7 +110,7 @@ function setWeatherLocation(location) {
 
 // returns weather location from localStorage
 function getWeatherLocation() {
-  const location = JSON.parse(localStorage.getItem('prevLocation'));
+  const location = localStorage.getItem('prevLocation');
   return location;
 }
 

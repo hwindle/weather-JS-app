@@ -157,8 +157,9 @@ window.addEventListener('load', () => {
 const getWeatherBtn = document.querySelector('#find-weather');
 getWeatherBtn.addEventListener('click', () => {
   const location = getLocationDOM();
-  //const dataArr = getWeather(location);
-  //console.log(dataArr);
   getWeather(location);
+  // show the main forecast area
+  const main = document.querySelector('main#forecast-area');
+  main.classList.remove('hide');
 });
 

@@ -34,7 +34,7 @@ function getLocationDOM() {
  */
 function getWeather(location) {
   const apiKey = '4c05f41df20f474bb47154635232101';
-  const baseURL = 'http://api.weatherapi.com/v1/';
+  const baseURL = 'https://api.weatherapi.com/v1/';
   let searchParams = `?key=${apiKey}`;
   if (location.lat) {
     searchParams += `&q=${location.lat},${location.long}`;
